@@ -1,0 +1,16 @@
+[
+    {
+        "buyer": "Buyer 1",
+        "date": "12.04.04",
+        "item": "test",
+        "price": 1.444,
+        "quantity": 12
+    },
+    {
+        "buyer": "Buyer 2",
+        "date": "22.09.05",
+        "item": "test 2",
+        "price": 9.444,
+        "quantity": 44
+    }
+]
