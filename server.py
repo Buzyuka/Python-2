@@ -1,7 +1,22 @@
 import argparse
 from socket import *
-from lesson_5.jmi_io import *
-from lesson_5.log.server_log_config import *
+from jmi_io import *
+from log.server_log_config import *
+import log.decorators
+
+
+@log.decorators.log()
+def test_log(x, y):
+    pass
+
+
+def main():
+    test_log(1, 2)
+    test_log(x=1, y=2)
+
+
+main()
+
 
 log = logging.getLogger('app.main')
 
