@@ -47,10 +47,7 @@ def write_responses(requests, clients):
     for sock in clients:
         if sock in requests:
             try:
-                # log.info("OK")
                 handle_request(requests[sock], sock)
-                # resp = requests[sock]
-                # test_len = sock.send(resp.upper())
             except Exception as e:
                 log.info("WRITE ERROR:" + repr(e))
                 log.info('client {} was disconnected'.format(sock.getpeername()))
@@ -129,32 +126,3 @@ try:
     mainloop()
 except Exception as e:
     log.critical(str(e))
-
-# s = socket(AF_INET, SOCK_STREAM)
-
-# try:
-#     s.bind((args.addr, args.port))
-#     s.listen(5)
-#
-#     log.info(f"Started server at {args.addr}:{args.port}")
-#
-#     while True:
-#         client, addr = s.accept()
-#         data = client.recv(1000000)
-#         request = json.loads(data.decode('ascii'))
-#         action = request["action"]
-#         decoded_data = data.decode('ascii')
-#
-#         log.info(f"Message: {decoded_data}, was receiveS by client: {addr}")
-#
-#         if request["action"] == "presence":
-#             client.send(build_response(100, "Hello"))
-#         else:
-#             client.send(build_response(400, f"Unspecified action: {action}"))
-#             log.error(f"Unspecified action: {action}")
-#
-#         client.close()
-# except KeyboardInterrupt:
-#     s.close()
-# except Exception as e:
-#     log.critical(str(e))
