@@ -35,6 +35,14 @@ def build_quit_request():
     return _build_request("quit", {})
 
 
+def build_message_request(account_name, room, message):
+    return _build_request("msg", {
+        "from": account_name,
+        "to": "#" + room,
+        "message": message
+    })
+
+
 def _build_request(action, payload):
     assert (len(action) <= 15)
 
@@ -65,3 +73,8 @@ def build_response(status_code, message):
         }).encode("ascii")
 
     raise IOError("Unspecified status code")
+
+
+def read_response(sock):
+    data = sock.recv(1000000)
+    return json.loads(data.decode('ascii'))
